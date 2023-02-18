@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { View } from 'react-native'
-import MapView, { Marker } from 'react-native-maps'
+import MapView, { Marker, enableLatestRenderer } from 'react-native-maps'
 import {
   requestForegroundPermissionsAsync,
   getCurrentPositionAsync,
@@ -10,6 +10,8 @@ import {
 } from 'expo-location'
 
 import { styles } from './styles'
+
+enableLatestRenderer()
 
 export default function App() {
   const [userLocation, setUserLocation] = useState<LocationObject | null>(null)
@@ -42,7 +44,7 @@ export default function App() {
         })
       }
     )
-  }, [userLocation])
+  }, [])
 
   return (
     <View style={styles.container}>
